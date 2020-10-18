@@ -1,0 +1,22 @@
+package com.excellent.service.impl;
+
+import com.excellent.model.Page;
+import com.excellent.service.PageService;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class PageServiceImpl implements PageService {
+    @Override
+    public Page subList(int page, List list) {
+        Page paging=new Page();
+        paging.setCurrentPage(page);
+        int count = list.size();
+        paging.setTotalPage(count % 8 == 0 ? count / 8 : count / 8 + 1);
+        paging.setPageSize(8);
+        paging.setStar((paging.getCurrentPage() - 1) * paging.getPageSize());
+        paging.setDataList(list.subList(paging.getStar(), count - paging.getStar() > paging.getPageSize() ? paging.getStar() + paging.getPageSize() : count));
+        return paging;
+    }
+}
