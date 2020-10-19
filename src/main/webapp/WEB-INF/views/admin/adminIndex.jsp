@@ -17,6 +17,8 @@
             <h2 style="margin-left:50px; margin-bottom: 14px;">1.在教师管理中修改教师信息</h2>
             <h2 style="margin-left:50px; margin-bottom: 14px;">2.在学生管理中修改学生信息</h2>
             <h2 style="margin-left:50px; margin-bottom: 14px;">3.添加老师或学生</h2>
+            <h2 style="margin-left:50px; margin-bottom: 14px;">4.添加管理员</h2>
+            <h2 style="margin-left:50px; margin-bottom: 14px;">5.在管理员页面修改管理员信息</h2>
         </div></div>
 </rapid:override>
 <%@ include file="base.jsp"%>

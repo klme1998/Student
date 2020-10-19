@@ -14,7 +14,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">教师Id</label>
             <div class="layui-input-block">
-                <input value="${teacher.teaId}" type="text" name="teaId" id="id" readonly="readonly" placeholder="请输入教师Id" autocomplete="off" class="layui-input">
+                <input value="${teacher.teaId}" type="text" name="teaId" id="id" readonly="readonly" style="background-color:bisque" placeholder="请输入教师Id" autocomplete="off" class="layui-input">
             </div>
                 <label class="layui-form-label">教师姓名</label>
             <div class="layui-input-block">
@@ -59,6 +59,7 @@
                 input.value = encodeURIComponent(encodeURIComponent(content));
                 myform.appendChild(input);
                 myform.method = "POST";
+                alert("修改成功");
                 myform.action = "<%=basePath%>admin/updateTeacherSuccess?page=1";
                 myform.submit();
                 document.body.removeChild(myform);

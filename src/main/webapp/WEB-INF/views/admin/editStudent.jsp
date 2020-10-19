@@ -10,11 +10,11 @@
         String path = request.getContextPath();
         String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
     %>
-    <form class="layui-form" id="changeform" method="post" action="<%=basePath%>teacher/changeTeaPass" style="margin:80px 400px; width:450px;">
+    <form class="layui-form" id="changeform" method="post" action="<%=basePath%>student/changeStuPass" style="margin:80px 400px; width:450px;">
         <div class="layui-form-item">
             <label class="layui-form-label">学生Id</label>
             <div class="layui-input-block">
-                <input value="${student.stuId}" type="text" name="stuId" id="id" readonly="readonly" placeholder="请输入学生Id" autocomplete="off" class="layui-input">
+                <input value="${student.stuId}" type="text" name="stuId" id="id" readonly="readonly" style="background-color:bisque" placeholder="请输入学生Id" autocomplete="off" class="layui-input">
             </div>
                 <label class="layui-form-label">学生姓名</label>
             <div class="layui-input-block">
@@ -60,6 +60,7 @@
                 input.value = encodeURIComponent(encodeURIComponent(content));
                 myform.appendChild(input);
                 myform.method = "POST";
+                alert("修改成功");
                 myform.action = "<%=basePath%>admin/updateStudentSuccess?page=1";
                 myform.submit();
                 document.body.removeChild(myform);

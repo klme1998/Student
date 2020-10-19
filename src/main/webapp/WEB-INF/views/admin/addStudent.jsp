@@ -62,6 +62,7 @@
                 input.value = encodeURIComponent(encodeURIComponent(content));
                 myform.appendChild(input);
                 myform.method = "POST";
+                alert("添加成功");
                 myform.action = "<%=basePath%>admin/addStudentAction?page=1";
                 myform.submit();
                 document.body.removeChild(myform);

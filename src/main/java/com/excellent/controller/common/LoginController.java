@@ -1,6 +1,7 @@
 package com.excellent.controller.common;
 //Created by Xuan 2019/10/10
 import com.excellent.service.UserService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +10,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-@SessionAttributes({"username","teaid","stuid"})
+@SessionAttributes({"username","admid","teaid","stuid"})
 public class LoginController {
     @Resource
     private UserService userService;
@@ -27,7 +28,8 @@ public class LoginController {
 
     @RequestMapping(value = "check",method = RequestMethod.POST)
     public String checkAccount(@RequestParam("userid") String id1,@RequestParam("userpass") String pass,Model model) {
-        int id=0;
+    /*
+      int id = Integer.valueOf(id1);
         if(id1.equals( "admin")){
             id = 000000;
             if(userService.checkAccount(id, pass) == 3){
@@ -38,11 +40,20 @@ public class LoginController {
                 model.addAttribute("msg","密码错误");
                 //这里不加redirect，否则前端el取不到值
                 return "login";
-            }/**/
+            }
 
-        }else{
-            id = Integer.valueOf(id1);
-            if (userService.checkAccount(id, pass) == 2) {
+
+        }
+        */
+        int id = Integer.valueOf(id1);
+        if (userService.checkAccount(id, pass) == 3) {
+            model.addAttribute("username",userService.getAdmNameById(id));
+            model.addAttribute("admid",id);
+            return "redirect:admin/adminIndex";
+        }
+        else  if (userService.checkAccount(id, pass) == 2){
+            //id = Integer.valueOf(id1);
+           // if (userService.checkAccount(id, pass) == 2) {
                 model.addAttribute("username",userService.getTeaNameById(id));
                 model.addAttribute("teaid",id);
                 return "redirect:teacher/teacherIndex";
@@ -56,7 +67,7 @@ public class LoginController {
                 //这里不加redirect，否则前端el取不到值
                 return "login";
             }
-        }
+     //   }
 
 
     }

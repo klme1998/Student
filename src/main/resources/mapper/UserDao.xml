@@ -2,6 +2,37 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.excellent.dao.UserDao">
+    <!---->
+    <select id="selectAdmById" resultType="Admin" parameterType="int">
+        SELECT * FROM Admin WHERE admId=#{id}
+    </select>
+
+    <update id="updateAdmPass" parameterType="Admin">
+        UPDATE Admin SET
+            admPass=#{admPass}
+        WHERE admId=#{admId}
+    </update>
+
+    <update id="updateAdmin" parameterType="Admin">
+        UPDATE Admin SET
+                           admId = #{admId},
+                           admPass=#{admPass},
+                           admName = #{admName}
+        WHERE admId=#{admId}
+    </update>
+
+    <select id="queryAllAdmin" resultType="Admin">
+        SELECT * FROM Admin
+    </select>
+
+    <insert id="insertAdmin" parameterType="Admin">
+        insert into Admin
+            (admId,admName,admPass)
+        values
+            (#{admId},#{admName},#{admPass})
+    </insert>
+
+    <!---->
 
     <select id="selectStuById" resultType="Student" parameterType="int">
         SELECT * FROM Student WHERE stuId=#{id}

@@ -37,6 +37,7 @@
         $(function () {
             $("button").click(function () {
                 if($("#now").val()===$("#again").val()){
+                    alert("修改密码成功");
                     $("#changeform").submit();
                 }
                 else{

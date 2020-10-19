@@ -1,6 +1,7 @@
 package com.excellent.service.impl;
 
 import com.excellent.dao.UserDao;
+import com.excellent.model.Admin;
 import com.excellent.model.Student;
 import com.excellent.model.Teacher;
 import com.excellent.service.UserService;
@@ -17,8 +18,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int checkAccount(int id, String pass) {
-        if(id == 000000){
+       /* if(id == 000000){
             if("00000000".equals(pass))
+                return 3;
+            else
+                return 0;
+        }
+        */
+        if(Integer.toString(id).charAt(0)=='1'){
+            if(userDao.selectAdmById(id).getAdmPass().equals(pass))
                 return 3;
             else
                 return 0;
@@ -96,5 +104,38 @@ public class UserServiceImpl implements UserService {
     public void insertTeacher(Teacher teacher){
         userDao.insertTeacher(teacher);
 
+    }
+
+//改写
+
+
+    @Override
+    public String getAdmNameById(int id) {
+        return userDao.selectAdmById(id).getAdmName();
+    }
+
+    @Override
+    public Admin getAdmInfoById(int id) {
+        return userDao.selectAdmById(id);
+    }
+
+    @Override
+    public void changeAdmPass(Admin admin) {
+        userDao.updateAdmPass(admin);
+    }
+
+    @Override
+    public List<Admin> queryAllAdmin() {
+        return userDao.queryAllAdmin();
+    }
+
+    @Override
+    public void updateAdmin(Admin admin) {
+        userDao.updateAdmin(admin);
+    }
+
+    @Override
+    public void insertAdmin(Admin admin) {
+        userDao.insertAdmin(admin);
     }
 }

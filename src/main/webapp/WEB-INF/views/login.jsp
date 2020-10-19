@@ -43,13 +43,14 @@
     <script>
         $(function () {
             $("#contact-submit").click(function () {
-                var testnum = /^\d{8}$/;
+                var testnum = /^\d{4}$/;
+                var testnum1 = /^\d{8}$/;
                 var id=$("#userid").val();
-                if (testnum.test(id)||id=='admin') {
+                if (testnum.test(id)||testnum1.test(id)) {
                     $("#contact").submit();
                 }
                 else {
-                    alert("请输入正确学号");}
+                    alert("请输入正确学号或教工号");}
             })
         })
     </script>

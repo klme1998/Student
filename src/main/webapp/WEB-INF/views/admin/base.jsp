@@ -25,13 +25,15 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <ul class="layui-nav layui-bg-blue">
-    <li class="layui-nav-item"><a href="<%=basePath%>student/studentIndex" style="font-size:20px;">首页</a></li>
+    <li class="layui-nav-item"><a href="<%=basePath%>admin/adminIndex" style="font-size:20px;">首页</a></li>
     <!--这里${requestScope}取不到值，需要改为${param}-->
+    <li class="layui-nav-item"><a href="<%=basePath%>admin/adminInfo?admid=${sessionScope.admid}" style="font-size:20px;">个人资料</a></li>
     <li class="layui-nav-item ">
         <a href="javascript:" style="font-size:20px;">管理</a>
         <dl class="layui-nav-child">
             <dd><a href="<%=basePath%>admin/studentList?page=1" style="font-size:16px;">学生管理</a></dd>
             <dd><a href="<%=basePath%>admin/teacherList?page=1" style="font-size:16px;">教师管理</a></dd>
+            <dd><a href="<%=basePath%>admin/adminList?page=1" style="font-size:16px;">管理员管理</a></dd>
         </dl>
        
     </li>
@@ -40,6 +42,7 @@
         <dl class="layui-nav-child">
             <dd><a href="<%=basePath%>admin/addStudent" style="font-size:16px;">添加学生</a></dd>
             <dd><a href="<%=basePath%>admin/addTeacher?page=1" style="font-size:16px;">添加教师</a></dd>
+            <dd><a href="<%=basePath%>admin/addAdmin?page=1" style="font-size:16px;">添加管理员</a></dd>
         </dl>
 
     </li>
